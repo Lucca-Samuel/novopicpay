@@ -1,10 +1,8 @@
 package com.picpay.domain.transaction;
 
+import com.picpay.domain.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,6 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
 public class Transaction {
     @Id
@@ -22,10 +21,10 @@ public class Transaction {
     private BigDecimal amount;
     @ManyToOne
     @JoinColumn(name = "sender_id")
-    private String sender;
+    private User sender;
     @ManyToOne
     @JoinColumn(name = "reciver_id")
-    private String receiver;
+    private User receiver;
     private LocalDateTime timeStamp;
 
 
