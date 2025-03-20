@@ -36,10 +36,10 @@ public class TransactionService {
 
         userService.validateTransaction(sender, transaction.amount());
 
-        boolean isAuthorize = this.authorizeTransaction(sender, transaction.amount());
+        /**boolean isAuthorize = this.authorizeTransaction(sender, transaction.amount());
         if(!isAuthorize){
             throw new Exception("Transação não autorizada");
-        }
+        }**/
 
         Transaction transactions = new Transaction();
         transactions.setAmount(transaction.amount());
@@ -61,6 +61,12 @@ public class TransactionService {
 
     }
 
+    /**
+     * -------!!!!Mock Fora do Ar!!!!-------
+     * @param sender
+     * @param value
+     * @return
+     */
     public boolean authorizeTransaction(User sender, BigDecimal value){
        ResponseEntity<Map> authorizationResponse = restTemplate.getForEntity("https://util.devi.tools/api/v2/authorize", Map.class);
 
